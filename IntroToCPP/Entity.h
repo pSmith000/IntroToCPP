@@ -3,6 +3,7 @@
 class Entity
 {
 public:
+    Entity();
     Entity(char icon, float health, float attackPower, float defensePower);
 
     float getHealth() { return m_health; }
@@ -10,7 +11,7 @@ public:
     float getDefensePower() { return m_defensePower; };
 
     float takeDamage(float damageAmount);
-    float attack(Entity entity);
+    float attack(Entity* entity);
 
 private:
     float m_health;
