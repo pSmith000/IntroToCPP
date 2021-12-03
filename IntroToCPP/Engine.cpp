@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include <iostream>;
 
 bool Engine::m_applicationShouldClose = false;
 
@@ -24,9 +25,9 @@ void Engine::run()
 
 void Engine::start()
 {
-	Entity wompus = Entity('W', 130002000, 5780002, -15000);
-	Entity redactedLittleSkeleton = Entity('r', 4400000 - 44000, 45500 - 40, 0);
-	Entity unclePhil = Entity('U', 1, 0, 6900055);
+	Entity wompus = Entity('W', 30, 11, 0);
+	Entity redactedLittleSkeleton = Entity('r', 2, 1, 0);
+	Entity unclePhil = Entity('U', 1, 0, 10);
 
 	m_entities[0] = wompus;
 	m_entities[1] = redactedLittleSkeleton;
@@ -64,6 +65,10 @@ void Engine::update()
 
 void Engine::draw()
 {
+	m_currentFighter1->printStats();
+	m_currentFighter2->printStats();
+	system("pause");
+	system("cls");
 }
 
 void Engine::end()
