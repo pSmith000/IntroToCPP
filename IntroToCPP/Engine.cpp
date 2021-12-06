@@ -1,6 +1,11 @@
 #include "Engine.h"
 #include <iostream>;
 
+Scene** m_scenes;
+int m_sceneCount = 0;
+Scene* m_currentScene;
+
+
 bool Engine::m_applicationShouldClose = false;
 
 Engine::Engine()
@@ -29,9 +34,30 @@ void Engine::run()
 	end();
 }
 
+void Engine::addScene(Scene* scene)
+{
+	Scene** tempArray = new Scene*[m_sceneCount + 1];
+
+	for (int i = 0; i < m_sceneCount; i++)
+	{
+		tempArray[i] = m_scenes[i];
+	}
+
+	tempArray[m_sceneCount] = scene;
+
+	m_scenes = tempArray;
+
+	m_sceneCount++;
+}
+
+Scene* Engine::getCurrentScene()
+{
+	return m_currentScene;
+}
+
 void Engine::setCurrentScene(int index)
 {
-	m_scenes
+	m_currentScene = m_scenes[index];
 }
 
 void Engine::start()
@@ -57,25 +83,7 @@ void Engine::start()
 void Engine::update()
 {
 	
-	if (m_currentFighter1->getHealth() <= 0 && m_currentFighterIndex < m_entityCount)
-	{
-		m_currentFighter1 = &m_entities[m_currentFighterIndex];
-		m_currentFighterIndex++;
-	}
-	if (m_currentFighter2->getHealth() <= 0 && m_currentFighterIndex < m_entityCount)
-	{
-		m_currentFighter2 = &m_entities[m_currentFighterIndex];
-		m_currentFighterIndex++;
-	}
-		
-	if ((m_currentFighter1->getHealth() <= 0 || m_currentFighter2->getHealth() <= 0) && m_currentFighterIndex >= m_entityCount)
-	{
-		m_applicationShouldClose = true;
-		return;
-	}
-
-	m_currentFighter1->attack(m_currentFighter2);
-	m_currentFighter2->attack(m_currentFighter1);
+	
 }
 
 void Engine::draw()

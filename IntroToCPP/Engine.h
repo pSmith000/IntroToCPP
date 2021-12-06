@@ -33,4 +33,5 @@ private:
 
 	static Scene** m_scenes;
 	static int m_sceneCount;
+	static Scene* m_currentScene;
 };

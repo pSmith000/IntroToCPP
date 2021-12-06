@@ -1,4 +1,5 @@
 #include "StartScene.h"
+#include "Engine.h"
 #include <iostream>
 
 void StartScene::draw()
@@ -19,9 +20,21 @@ void StartScene::update()
 
 		if (playerInput == '1')
 		{
-			
+			system("pause");
+			system("cls");
+			Engine::setCurrentScene(1);
+			validInput = true;
 		}
-
+		else if (playerInput == '2')
+		{
+			Engine::setApplicationShouldClose(true);
+		}
+		else
+		{
+			std::cout << "Incorrect Option. Try Again." << std::endl;
+			system("pause");
+			system("cls");
+		}
 	}
 
 	

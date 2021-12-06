@@ -1,6 +1,8 @@
 #pragma once
+#include "Actor.h"
 
-class Entity
+class Entity : 
+    public Actor
 {
 public:
     Entity();

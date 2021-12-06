@@ -16,6 +16,7 @@ Scene::~Scene()
 bool Scene::getStarted()
 {
 	m_started = true;
+	return m_started;
 }
 
 void Scene::addActor(Actor* actor)
@@ -70,7 +71,7 @@ void Scene::start()
 
 void Scene::update()
 {
-	for (int i; i < m_actorCount; i++)
+	for (int i = 0; i < m_actorCount; i++)
 	{
 		if (!m_started)
 		{
