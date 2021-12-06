@@ -10,6 +10,12 @@ Engine::Engine()
 	m_currentFighterIndex = 0;
 }
 
+Engine::~Engine()
+{
+	delete m_currentFighter1;
+	delete m_currentFighter2;
+}
+
 void Engine::run()
 {
 	start();
@@ -23,6 +29,11 @@ void Engine::run()
 	end();
 }
 
+void Engine::setCurrentScene(int index)
+{
+	m_scenes
+}
+
 void Engine::start()
 {
 	Entity wompus = Entity('W', 30, 11, 0);
@@ -33,6 +44,10 @@ void Engine::start()
 	m_entities[1] = redactedLittleSkeleton;
 	m_entities[2] = unclePhil;
 	m_entityCount = 3;
+
+	int test = 5;
+	Entity* entityPtrs[5];
+	Entity** entities = new Entity * [test];
 
 	m_currentFighter1 = &m_entities[0];
 	m_currentFighter2 = &m_entities[1];
